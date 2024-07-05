@@ -1,0 +1,6 @@
+~~- filename upper right~~
+- obsidian plugin
+- markdown treesitter
+- floating terminal
+- floating command line
+- 
