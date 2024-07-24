@@ -4,7 +4,6 @@
 -- See the kickstart.nvim README for more information
 
 return {
-
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -55,7 +54,7 @@ return {
     },
     config = function(_, opts)
       require('catppuccin').setup(opts)
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      -- vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
 
@@ -188,6 +187,20 @@ return {
     config = function(_, opts)
       require('tokyodark').setup(opts) -- calling setup is optional
       -- vim.cmd [[colorscheme tokyodark]]
+    end,
+  },
+  {
+    '0xstepit/flow.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require('flow').setup {
+        transparent = true,
+        fluo_color = 'orange',
+        mode = 'normal',
+      }
+      vim.cmd 'colorscheme flow'
     end,
   },
 }
