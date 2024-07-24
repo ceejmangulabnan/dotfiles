@@ -6,25 +6,58 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-
 config.default_domain = "WSL:Ubuntu"
 -- For example, changing the color scheme:
--- config.color_scheme = "Catpuccin Mocha"
 config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono Nerd Font" },
+	-- { family = "FiraCode Nerd Font" },
+	-- { family = "Hack Nerd Font" },
 })
-config.color_scheme = "MaterialDarker"
 
+config.color_scheme = "Catpuccin Mocha"
+-- config.color_scheme = "MaterialDarker"
 -- config.color_scheme = "AdventureTime"
--- config.window_decorations = "RESIZE"
-config.font_size = 9.5
+-- config.tab_bar_at_bottom = true
+config.window_decorations = "RESIZE | INTEGRATED_BUTTONS"
+config.font_size = 10
+config.line_height = 1.1
 config.window_padding = {
 	left = "0px",
 	right = "0px",
 	top = "0px",
 	bottom = "0px",
 }
-config.window_background_opacity = 0.1
+
+-- Background Settings
+config.background = {
+	{
+		source = {
+			Color = "rgb(0, 19, 29)",
+		},
+		width = "100%",
+		height = "100%",
+		opacity = 0.6,
+	},
+}
+-- Background opacity
+-- config.window_background_opacity = 0
+config.win32_system_backdrop = "Acrylic"
+-- This setting fixed transparency errors for me
+config.front_end = "WebGpu"
+
+-- Retro Style Tab Bar
+config.use_fancy_tab_bar = false
+
+-- Toggle Opacity Function
+wezterm.on("toggle-opacity", function(window)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 1
+	else
+		overrides.window_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
@@ -32,17 +65,6 @@ config.inactive_pane_hsb = {
 	brightness = 0.5,
 }
 
--- Session Management
--- wezterm.on("save_session", function(window)
--- 	session_manager.save_state(window)
--- end)
--- wezterm.on("load_session", function(window)
--- 	session_manager.load_state(window)
--- end)
--- wezterm.on("restore_session", function(window)
--- 	session_manager.restore_state(window)
--- end)
--- Keys
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	-- Send C-a when pressing C-a twice
@@ -50,10 +72,8 @@ config.keys = {
 	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
 	{ key = "phys:Space", mods = "LEADER", action = act.ActivateCommandPalette },
 
-	-- Session Management Keybinds
-	-- { key = "S", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_session" }) },
-	-- { key = "L", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_session" }) },
-	-- { key = "R", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_session" }) },
+	-- Toggle Opacity
+	{ key = "O", mods = "LEADER", action = act.EmitEvent("toggle-opacity") },
 
 	-- Pane keybindings
 	{ key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
