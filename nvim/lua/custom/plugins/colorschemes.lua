@@ -199,6 +199,7 @@ return {
         transparent = true,
         fluo_color = 'orange',
         mode = 'normal',
+        aggressive_spell = true,
       }
       vim.cmd 'colorscheme flow'
     end,
