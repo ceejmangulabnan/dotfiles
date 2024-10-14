@@ -25,7 +25,7 @@ return {
       {
         name = 'tech-notes',
         -- Path to Obsidian Vault
-        path = '/mnt/c/Users/ceej/Documents/obsidian-tech-notes',
+        path = '/mnt/c/Users/ceej/Documents/obsidian-brain',
       },
     },
     -- Where new notes will be created
