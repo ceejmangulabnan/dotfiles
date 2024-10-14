@@ -171,6 +171,8 @@ vim.keymap.set('v', ';', ':', { desc = 'Command in v' })
 vim.keymap.set('n', ',p', '"0p', { desc = 'Paste yanked' })
 vim.keymap.set('v', ',p', '"0p', { desc = 'Paste yanked' })
 
+vim.keymap.set('n', '<leader>cl', '<cmd>%s/\r//g<CR>', { desc = 'Clear' })
+
 local set = vim.opt
 -- tab
 set.tabstop = 2
@@ -302,19 +304,22 @@ require('lazy').setup({
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+      require('which-key').add {
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        -- ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+        -- ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        -- ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        -- ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        -- ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+        -- ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
     end,
   },
 
@@ -597,7 +602,19 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        tsserver = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = 'non-relative',
+              importModuleSpecifierEnding = 'minimal',
+              quotePreference = 'single',
+              includeCompletionsForImportStatements = true,
+              includeCompletionsWithSnippetText = true,
+              includeAutomaticOptionalChainCompletions = true,
+              includeCompletionsWithInsertText = true,
+            },
+          },
+        },
         --
 
         lua_ls = {
