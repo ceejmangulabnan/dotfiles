@@ -133,7 +133,7 @@ return {
           light = 'lotus',
         },
       }
-      vim.cmd 'colorscheme kanagawa-wave'
+      -- vim.cmd 'colorscheme kanagawa-wave'
     end,
   },
   {
@@ -201,7 +201,7 @@ return {
         mode = 'normal',
         aggressive_spell = true,
       }
-      -- vim.cmd 'colorscheme flow'
+      vim.cmd 'colorscheme flow'
     end,
   },
 }
