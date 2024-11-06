@@ -135,3 +135,11 @@ LS_COLORS+='pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=01
 eval "$(starship init zsh)"
 set -o vi
 bindkey -v 
+
+# pnpm
+export PNPM_HOME="/home/ceej/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
