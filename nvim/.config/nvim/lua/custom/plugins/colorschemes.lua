@@ -10,8 +10,8 @@ return {
     priority = 1000,
     opts = {
       term_colors = true,
-      -- transparent_background = true,
-      transparent_background = false,
+      transparent_background = true,
+      -- transparent_background = false,
       dim_inactive = {
         enabled = false, -- dims the background color of inactive window
         shade = 'dark',
@@ -86,8 +86,8 @@ return {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         typeStyle = {},
-        -- transparent = true, -- do not set background color
-        transparent = false,
+        transparent = true, -- do not set background color
+        -- transparent = false,
         dimInactive = false, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         colors = { -- add/modify theme and palette colors
@@ -133,7 +133,7 @@ return {
           light = 'lotus',
         },
       }
-      -- vim.cmd 'colorscheme kanagawa-wave'
+      vim.cmd 'colorscheme kanagawa-wave'
     end,
   },
   {
@@ -201,7 +201,7 @@ return {
         mode = 'normal',
         aggressive_spell = true,
       }
-      vim.cmd 'colorscheme flow'
+      -- vim.cmd 'colorscheme flow'
     end,
   },
 }
