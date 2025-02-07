@@ -26,11 +26,11 @@
 
     // Modules Left
     "modules-left": [
-"custom/appmenu",
+        "custom/appmenu",
         "group/links",
 "wlr/taskbar",
         "group/quicklinks",
-"hyprland/window",
+        "hyprland/window",
     ],
 
     // Modules Center
@@ -43,10 +43,10 @@
     "modules-right": [
         "custom/updates",
         "pulseaudio",
-//"backlight",
+        //"backlight",
         "bluetooth",
         "battery", 
-//"network",
+        "network",
         "group/hardware",
         "group/tools",
 "tray",
