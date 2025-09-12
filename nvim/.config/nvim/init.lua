@@ -616,9 +616,16 @@ require('lazy').setup({
               includeAutomaticOptionalChainCompletions = true,
               includeCompletionsWithInsertText = true,
             },
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = '/usr/local/lib/node_modules/@vue/language-server',
+                languages = { 'vue' },
+              },
+            },
           },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
-        --
 
         lua_ls = {
           -- cmd = {...},
@@ -649,6 +656,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'vue-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
