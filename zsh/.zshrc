@@ -4,8 +4,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export DOTFILES="$HOME/dotfiles"
 
-ENABLE_CORRECTION="true"
-
 plugins=(
 	git
 	npm
@@ -21,8 +19,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias sourcezsh="source ~/.zshrc"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /usr/share/nvm/init-nvm.sh
 
 # Path Variables
 # export TERM='xterm-256color'
