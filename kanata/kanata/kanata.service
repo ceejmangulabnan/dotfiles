@@ -1,0 +1,10 @@
+[Unit]
+Description=Kanata KBD_Homerow Keybindings Service
+
+[Service]
+ExecStart=/usr/bin/kanata -c /etc/kanata/kanata.kbd
+Type=simple
+Restart=no
+
+[Install]
+WantedBy=default.target
