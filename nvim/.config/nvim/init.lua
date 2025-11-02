@@ -597,6 +597,73 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {},
+        vtsls = {
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+          },
+          settings = {
+            vtsls = {
+              ts_ls = {
+                globalPlugins = {
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                    languages = { 'vue' },
+                    configNamespace = 'typescript',
+                  },
+                },
+              },
+            },
+            typescript = {
+              inlayHints = {
+                enumMemberValues = {
+                  enabled = true,
+                },
+                functionLikeReturnTypes = {
+                  enabled = true,
+                },
+                parameterNames = { enabled = 'all' },
+                parameterTypes = {
+                  enabled = true,
+                  suppressWhenArgumentMatchesName = true,
+                },
+                propertyDeclarationTypes = {
+                  enabled = true,
+                },
+                variableTypes = {
+                  enabled = true,
+                },
+              },
+            },
+          },
+        },
+        vue_ls = {
+          settings = {
+            vue = {
+              inlayHints = {
+                destructuredProps = {
+                  enabled = true,
+                },
+                inlineHandlerLoading = {
+                  enabled = true,
+                },
+                missingProps = {
+                  enabled = true,
+                },
+                optionsWrapper = {
+                  enabled = true,
+                },
+                vBindShorthand = {
+                  enabled = true,
+                },
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -627,16 +694,14 @@ require('lazy').setup({
         },
 
         lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                globals = { 'vim' },
+              },
             },
           },
         },
@@ -655,7 +720,6 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'vue-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
