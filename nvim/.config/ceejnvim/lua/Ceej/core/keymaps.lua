@@ -1,4 +1,5 @@
 -- ----------- General Keymaps -----------
+local opts = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down half page' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up half page' })
@@ -19,6 +20,9 @@ vim.keymap.set('n', '<C-[>', '<cmd>tabprevious<CR>', { desc = 'Go to Previous Ta
 vim.keymap.set('n', '<C-]>', '<cmd>tabnext<CR>', { desc = 'Go to Next Tab' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+vim.keymap.set('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv', opts)
 
 -- Window/Pane Navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
