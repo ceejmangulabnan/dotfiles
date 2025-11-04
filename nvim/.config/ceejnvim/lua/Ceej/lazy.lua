@@ -18,11 +18,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Set leader
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  { import = "Ceej.plugins" },
-  checker = { enabled = true }
+	{ import = "Ceej.plugins" },
 })
