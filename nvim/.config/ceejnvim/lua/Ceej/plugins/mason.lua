@@ -18,6 +18,7 @@ return {
 			vtsls = {},
 			vue_ls = {},
 			ts_ls = {},
+			cssls = {},
 			tailwindcss = {},
 		},
 	},
@@ -26,6 +27,13 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = { "lua_ls", "ts_ls", "vtsls", "prettier", "prettierd" },
+		})
+
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+		vim.lsp.config("cssls", {
+			capabilities = capabilities,
 		})
 
 		local vue_language_server_path = vim.fn.expand("$MASON/packages")
