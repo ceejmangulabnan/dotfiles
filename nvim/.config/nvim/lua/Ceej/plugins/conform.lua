@@ -3,6 +3,8 @@ return {
 	opts = {},
 	config = function()
 		require("conform").setup({
+			log_level = vim.log.levels.DEBUG,
+			log_to_file = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
@@ -14,8 +16,8 @@ return {
 				vue = { "prettierd", "prettier" },
 			},
 			format_on_save = {
-				timeout_ms = 10000,
-				lsp_fallback = true,
+				timeout_ms = 5000,
+				lsp_fallback = false,
 			},
 		})
 	end,

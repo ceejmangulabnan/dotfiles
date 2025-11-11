@@ -24,4 +24,5 @@ vim.g.maplocalleader = " "
 -- Setup lazy.nvim
 require("lazy").setup({
 	{ import = "Ceej.plugins" },
+	{ import = "Ceej.plugins.lsp" },
 })
