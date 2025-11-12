@@ -187,13 +187,21 @@ return {
 				},
 			},
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-      on_attach = function(client, bufnr)
-          -- Disable formatting capability for vtsls
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-      end,
+			on_attach = function(client, bufnr)
+				-- Disable formatting capability for vtsls
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
+			end,
 		})
-    vim.lsp.enable("vtsls")
+		vim.lsp.enable("vtsls")
+
+		vim.lsp.config("eslint", {
+			cmd = { "pnpm", "exec", "eslint", "--stdin", "--stdin-filename", "%filepath" },
+			settings = {
+				workingDirectory = { mode = "location" },
+			},
+		})
+		vim.lsp.enable("eslint")
 
 		-- gopls
 		vim.lsp.config("gopls", {
