@@ -44,6 +44,8 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 --   cache_enabled = 0,
 -- }
 
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+
 -- ----------- Plugin Keymaps -----------
 
 -- Oil
