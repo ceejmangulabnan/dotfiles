@@ -45,17 +45,17 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- }
 
 -- NOTE: Preferred WSL Clipboard. Install inside WSL to work
-vim.g.clipboard = {
-	name = "win32yank",
-	copy = {
-		["+"] = "win32yank.exe -i --crlf",
-		["*"] = "win32yank.exe -i --crlf",
-	},
-	paste = {
-		["+"] = "win32yank.exe -o --lf",
-		["*"] = "win32yank.exe -o --lf",
-	},
-}
+-- vim.g.clipboard = {
+-- 	name = "win32yank",
+-- 	copy = {
+-- 		["+"] = "win32yank.exe -i --crlf",
+-- 		["*"] = "win32yank.exe -i --crlf",
+-- 	},
+-- 	paste = {
+-- 		["+"] = "win32yank.exe -o --lf",
+-- 		["*"] = "win32yank.exe -o --lf",
+-- 	},
+-- }
 
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
 
