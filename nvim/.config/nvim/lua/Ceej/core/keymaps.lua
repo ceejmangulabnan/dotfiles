@@ -1,5 +1,6 @@
 -- ----------- General Keymaps -----------
 local opts = { noremap = true, silent = true }
+vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half page" })
@@ -24,7 +25,16 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- Window/Pane Navigation
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word cursor is on globally" }
+)
+vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", { desc = "Restart config :restart)" })
+
+-- Window Pane Navigation
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
