@@ -26,3 +26,5 @@ require("lazy").setup({
 	{ import = "Ceej.plugins" },
 	{ import = "Ceej.plugins.lsp" },
 })
+
+vim.cmd("colorscheme kanagawa-wave")

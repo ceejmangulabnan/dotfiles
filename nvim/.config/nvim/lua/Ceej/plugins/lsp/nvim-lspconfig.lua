@@ -133,19 +133,19 @@ return {
 		vim.lsp.enable("emmet_language_server")
 
 		-- emmet_ls
-		vim.lsp.config("emmet_ls", {
-			filetypes = {
-				"html",
-				"typescriptreact",
-				"javascriptreact",
-				"css",
-				"sass",
-				"scss",
-				"less",
-				"svelte",
-			},
-		})
-		vim.lsp.enable("emmet_ls")
+		-- vim.lsp.config("emmet_ls", {
+		-- 	filetypes = {
+		-- 		"html",
+		-- 		"typescriptreact",
+		-- 		"javascriptreact",
+		-- 		"css",
+		-- 		"sass",
+		-- 		"scss",
+		-- 		"less",
+		-- 		"svelte",
+		-- 	},
+		-- })
+		-- vim.lsp.enable("emmet_ls")
 
 		-- ts_ls (TypeScript/JavaScript)
 		vim.lsp.config("ts_ls", {
@@ -160,6 +160,7 @@ return {
 				preferences = {
 					includeCompletionsForModuleExports = true,
 					includeCompletionsForImportStatements = true,
+					importModuleSpecifier = "non-relative",
 				},
 			},
 		})
@@ -182,6 +183,16 @@ return {
 					tsserver = {
 						globalPlugins = {
 							vue_plugin,
+						},
+					},
+					typescript = {
+						preferences = {
+							importModuleSpecifier = "non-relative",
+						},
+					},
+					javascript = {
+						preferences = {
+							importModuleSpecifier = "non-relative",
 						},
 					},
 				},
