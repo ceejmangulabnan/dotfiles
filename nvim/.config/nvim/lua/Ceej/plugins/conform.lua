@@ -14,10 +14,22 @@ return {
 				typescriptreact = { "prettierd", "prettier" },
 				javascriptreact = { "prettierd", "prettier" },
 				vue = { "prettierd", "prettier" },
+				php = { "php-cs-fixer", "duster" },
 			},
 			format_on_save = {
 				timeout_ms = 5000,
 				lsp_fallback = false,
+			},
+			formatters = {
+				["php-cs-fixer"] = {
+					command = "php-cs-fixer",
+					args = {
+						"fix",
+						"--quiet",
+						"$FILENAME",
+					},
+					stdin = false,
+				},
 			},
 		})
 	end,
