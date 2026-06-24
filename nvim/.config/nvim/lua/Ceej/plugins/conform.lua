@@ -14,7 +14,8 @@ return {
 				typescriptreact = { "prettierd", "prettier" },
 				javascriptreact = { "prettierd", "prettier" },
 				vue = { "prettierd", "prettier" },
-				php = { "php-cs-fixer", "duster" },
+				php = { "php-cs-fixer" },
+				blade = { "blade-formatter" },
 			},
 			format_on_save = {
 				timeout_ms = 5000,
